@@ -7,7 +7,7 @@ public class Object {
 	String datatype;
 	String description;
 	public Object(String attribute, String entity, String datatype, String description) {
-		super();
+		
 		this.attribute = attribute;
 		this.entity = entity;
 		this.datatype = datatype;

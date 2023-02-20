@@ -1,0 +1,58 @@
+entity fund{
+
+  let fundName as string
+   
+  let fixedFundVal as double
+  let fixedFundAccInt as double
+   
+   
+  let txnAmntPerFubnd as double
+  let noOfUnitsBeforeTxn as double
+
+
+}
+
+entity Context{
+
+  let calculationDate as string
+  let fundCalcInstr as FundCalculationInstruction
+  
+  
+  let fundAmnt as string
+   
+
+}
+
+
+entity policy{
+
+  let totalWithdrawals as double
+  
+  let productCd as string
+  let effectStartDt as string
+  
+  
+  let chargBkEvt as string
+  let contractType as string
+  
+  let conLvl as string
+  let commOption as string
+  
+  let #overload# totalWithdrawals as double with (string startDate,string endDate)
+  let #overload# totalPayout as double with (string currentTaxYear)
+  let #overload# totalPayout as double with (string currentTaxYear,string abc,string def,string cbvff)
+  }
+
+instruction FundCalCulationInstruction{
+
+  let fixedFundTable[] as fund
+  let eia as double
+  
+  let eiaRate as double
+  
+  let outputTable[] as Fund
+  let surrenderValue as double
+  
+  }
+
+   
