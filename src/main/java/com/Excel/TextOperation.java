@@ -31,7 +31,7 @@ public class TextOperation {
 				if (str.length() > 0 && str.charAt(str.length() - 1) == '{') {
 					String name = maupultaeString(str);
 					if(isIns==false)
-					flag = name + ".class";
+					flag = name ;
 					else
 					 flag=name+".instruction";
 				} else if (str.length() > 0 && str.contains("}")) {
@@ -68,16 +68,22 @@ public class TextOperation {
 
 	private static void putDataInMap(String str, List<Object> li, String flag) {
 		String[] split = str.split(" ");
-		String attribute = split[3];
-		String datatype = split[5];
+		List<String> list=new ArrayList<>();
+		for(int i=0;i<split.length;i++) {
+			if(split[i]!=" " && split[i]!="") {
+				list.add(split[i]);
+			}
+		}
+		String attribute = list.get(1);
+		String datatype = list.get(3);
 		String description=null;
 		
 		if(attribute.equalsIgnoreCase("#overLoad#")) {
-			attribute=split[4]+"*";
-			datatype=split[6];
+			attribute=list.get(2)+"*";
+			datatype=list.get(4);
 			StringBuilder sb=new StringBuilder();
-			for(int i=8;i<=split.length-1;i++) {
-				sb.append(split[i]+" ");
+			for(int i=6;i<list.size();i++) {
+				sb.append(list.get(i)+" ");
 			}
 			
 			description=sb.toString();
